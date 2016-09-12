@@ -6,19 +6,10 @@ import { createStore, applyMiddleware } from 'redux';
 import App from './components/app';
 import reducers from './reducers';
 
-import { loadState, saveState } from './localStorage'
-const persistedState = loadState();
-const store = createStore(
-  reducers,
-  persistedState
-);
-
-store.subscribe(() => {
-  saveState(store.getState())
-})
+const createStoreWithMiddleware = applyMiddleware()(createStore);
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={createStoreWithMiddleware(reducers)}>
     <App />
   </Provider>
   , document.querySelector('#app'));

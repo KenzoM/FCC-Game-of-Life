@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
-import Header from './header'
-import RecipeBox from '../containers/recipebox';
-import Footer from './footer'
-import AddRecipeButton from '../containers/add_recipe';
+// import Header from './header'
+// import Footer from './footer'
+
 import style from '../stylesheets/styles.scss';
-var $ = require ('jquery')
 
 export default class App extends Component {
   render() {
     return (
       <div id="app">
-        <Header />
-        <RecipeBox />
-        <Footer />
+        <h1>Hello World</h1>
       </div>
     );
   }
