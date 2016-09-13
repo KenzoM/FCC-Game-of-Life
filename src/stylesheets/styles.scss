@@ -1,6 +1,4 @@
-main {
-  flex: 1 0 auto;
-}
+
 nav{
   background: skyblue;
 }
@@ -9,13 +7,29 @@ body{
   background: #e2e2e2;
 }
 
+table {
+  width: 100%;
+  table-layout: fixed;
+  overflow: hidden;
+}
+
+td{
+  width: 33.33%;
+  position: relative;
+  color: #101935;
+  background: #F2FDFF;
+  border: 4px solid #DBCBD8;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.5s ease-out, color 0.5s ease-out;
+}
+
+td:hover{
+  background: #564787;
+  color: #F2FDFF;
+}
 
 .controller{
   margin-top: 10px;
   text-align: center;
-}
-
-.board{
-  border: black solid 3px;
-  height: 50vh;
 }
