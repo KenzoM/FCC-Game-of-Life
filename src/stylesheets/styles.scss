@@ -19,7 +19,7 @@ td{
   color: #101935;
   background: #F2FDFF;
   border: 4px solid #DBCBD8;
-  border-radius: 12px;
+  border-radius: 5px;
   cursor: pointer;
   transition: background 0.5s ease-out, color 0.5s ease-out;
 }
@@ -27,6 +27,10 @@ td{
 td:hover{
   background: #564787;
   color: #F2FDFF;
+}
+
+.btn{
+  background: #93C0A4
 }
 
 .controller{
