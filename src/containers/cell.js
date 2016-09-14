@@ -11,20 +11,20 @@ export default class Cell extends Component{
     this.state = {
       color: 'dead'
     };
-    this.test = this.test.bind(this);
+    this.onClickHandle = this.onClickHandle.bind(this);
   }
 
-  test(){
+  onClickHandle(){
     this.state.color === 'dead' ? this.setState({color:'alive'}) : this.setState({color:'dead'})
   }
 
   render(){
     return (
       <td
-        className={this.state.color} 
+        className={this.state.color}
         key={this.props.cellID}
         id={this.props.cellID}
-        onClick={this.test}>
+        onClick={this.onClickHandle}>
       </td>
     )
   }
