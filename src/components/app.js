@@ -3,6 +3,7 @@ import Header from './header'
 import Footer from './footer'
 import Board from './board'
 import Controller from './controller'
+import Generation from './generation'
 
 import style from '../stylesheets/styles.scss';
 
@@ -13,6 +14,7 @@ export default class App extends Component {
         <Header />
         <Controller />
         <Board />
+        <Generation />
       </div>
     );
   }
