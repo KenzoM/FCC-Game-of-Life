@@ -1,20 +1,22 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import Cell from '../containers/cell'
 
 export default class Example extends Component {
   constructor(props){
     super(props);
-    this.state = {height: 18, width: 20}
+    this.state = {height: 18, width: 40}
   }
   render(){
     let rows = [];
     for (var i = 0; i < this.state.height; i++){
       let rowID = `row${i}`
-      let cell = []
+      let bin = []
       for (var idx = 0; idx < this.state.width; idx++){
         let cellID = `cell${i}-${idx}`
-        cell.push(<td key={cellID} id={cellID}></td>)
+        // bin.push(<td key={cellID} id={cellID} ></td>)
+        bin.push(<Cell key={cellID} id={cellID} />)
       }
-      rows.push(<tr key={i} id={rowID}>{cell}</tr>)
+      rows.push(<tr key={i} id={rowID}>{bin}</tr>)
     }
     return(
       <div className="container">
