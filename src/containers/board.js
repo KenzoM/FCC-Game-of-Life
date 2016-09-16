@@ -17,7 +17,9 @@ class Board extends Component {
       let bin = [];
       for (let x = 0; x < width; x++){
         let cellID = `cell${y}-${x}`;
-        bin.push(<Cell key={cellID} id={cellID} status={'dead'} />)
+        let index = y * width + x //index of grid
+        let status = this.props.grid.cells[index];//0 = dead, 1 = alive
+        bin.push(<Cell key={cellID} id={cellID} status={status} />)
       }
       rows.push(<tr key={y} id={rowID}>{bin}</tr>)
     }

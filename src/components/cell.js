@@ -6,9 +6,10 @@ export default class Cell extends Component {
 
   }
   render(){
+    const status = this.props.status === 1 ? 'alive' : 'dead';
     return (
       <td
-        className={this.props.status}
+        className={status}
         id={this.props.id}
         >
       </td>

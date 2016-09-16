@@ -3,10 +3,10 @@
 
 
 const initialState = {
-  width: 5,
-  height: 5,
+  width: 3,
+  height: 3,
   cells: [
-    0, 0, 0, 1, 1, 1, 1, 0, 0
+    1, 0, 0, 1, 1, 0, 1, 0, 0
   ],
   generation: 0
 };
