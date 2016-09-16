@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
+import grid from './reducer_grid'
 
 const rootReducer = combineReducers({
-  state: (state = {}) => state
+  grid : grid
 });
 
 export default rootReducer;
