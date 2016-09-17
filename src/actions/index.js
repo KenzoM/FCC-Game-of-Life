@@ -1,4 +1,12 @@
 export const START = 'START';
 export const CLEAR = 'CLEAR';
 export const RANDOMIZE = 'RANDOMIZE';
-import shortid from 'shortid';
+export const CELL_CLICK = 'CELL_CLICK'
+
+
+export function onCellClick(coord) {
+  return {
+    type: CELL_CLICK,
+    payload: coord
+  }
+}

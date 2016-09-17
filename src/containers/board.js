@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import * from '../actions/index';
+import { onCellClick } from '../actions/index';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Cell from '../components/cell'
@@ -7,6 +7,10 @@ import Cell from '../components/cell'
 class Board extends Component {
   constructor(props){
     super(props);
+    this.onClickToggle = this.onClickToggle.bind(this)
+  }
+  onClickToggle(coord){
+    this.props.onCellClick(coord)
   }
   render(){
     const height = this.props.grid.height
@@ -19,7 +23,13 @@ class Board extends Component {
         let cellID = `cell${y}-${x}`;
         let index = y * width + x //index of grid
         let status = this.props.grid.cells[index];//0 = dead, 1 = alive
-        bin.push(<Cell key={cellID} id={cellID} status={status} />)
+        bin.push(
+          <Cell
+            key={x}
+            id={cellID}
+            status={status}
+            onClick={() => this.onClickToggle({x,y})}
+          />)
       }
       rows.push(<tr key={y} id={rowID}>{bin}</tr>)
     }
@@ -38,14 +48,13 @@ class Board extends Component {
   }
 }
 
-// function mapDispatchToProps(dispatch){
-//   return bindActionCreators({addRecipe}, dispatch)
-// }
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({onCellClick}, dispatch)
+}
 function mapStateToProps(state) {
   return {
     grid: state.grid
   };
 }
 
-
-export default connect(mapStateToProps)(Board)
+export default connect(mapStateToProps,mapDispatchToProps)(Board)

@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 export default class Cell extends Component {
   constructor(props){
     super(props);
-
   }
   render(){
     const status = this.props.status === 1 ? 'alive' : 'dead';
@@ -11,6 +10,7 @@ export default class Cell extends Component {
       <td
         className={status}
         id={this.props.id}
+        onClick={this.props.onClick}
         >
       </td>
     )
