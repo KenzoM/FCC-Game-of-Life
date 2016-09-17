@@ -12,9 +12,7 @@ export default class App extends Component {
     return (
       <div>
         <Header />
-        <Controller />
         <Board />
-
       </div>
     );
   }

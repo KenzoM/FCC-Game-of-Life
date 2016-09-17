@@ -6,13 +6,21 @@ import { bindActionCreators } from 'redux';
 class Controller extends Component {
   constructor(props){
     super(props);
+    this.test = this.test.bind(this);
+  }
+  componentDidMount() {
+  }
+
+  test(){
+    // this.props.start
+    console.log(this.props.coord)
   }
   render(){
     return(
       <div className="container">
         <div className="row">
           <div className="col s12 controller">
-            <a onClick={this.props.start} className="waves-effect waves-light btn">Start</a>
+            <a onClick={this.test} className="waves-effect waves-light btn">Start</a>
             <a onClick={this.props.clear} className="waves-effect waves-light btn">Clear</a>
             <a onClick={this.props.randomize}className="waves-effect waves-light btn">Randomize</a>
           </div>
