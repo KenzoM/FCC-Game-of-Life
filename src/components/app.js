@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from './header'
 import Footer from './footer'
 import Board from '../containers/board'
-import Controller from './controller'
+import Controller from '../containers/controller'
 import Generation from './generation'
 
 import style from '../stylesheets/styles.scss';
@@ -14,7 +14,7 @@ export default class App extends Component {
         <Header />
         <Controller />
         <Board />
-        <Generation />
+
       </div>
     );
   }

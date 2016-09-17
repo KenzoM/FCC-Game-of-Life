@@ -10,3 +10,13 @@ export function onCellClick(coord) {
     payload: coord
   }
 }
+export function clear() {
+  return {
+    type: CLEAR
+  }
+}
+export function randomize() {
+  return {
+    type: RANDOMIZE
+  }
+}

@@ -1,4 +1,4 @@
-import { CELL_CLICK } from '../actions/index';
+import { CELL_CLICK, CLEAR, RANDOMIZE } from '../actions/index';
 
 function getRandomInt(min, max) {
     "use strict";
@@ -25,6 +25,15 @@ export default function(state = initialState, action){
         ...state,
         cells
       };
+    case CLEAR:
+      const clearCell = state.cells.map( val => 0)
+      //use Object.assign to create new object and update the grid-cells
+      return Object.assign({}, state, {cells: clearCell})
+
+    case RANDOMIZE:
+      console.log(state)
+      return state
     }
+
   return state;
 }
