@@ -10,9 +10,10 @@ export function onCellClick(coord) {
     payload: coord
   }
 }
-export function start() {
+export function start(currentGeneration) {
   return {
-    type: START
+    type: START,
+    payload: currentGeneration
   }
 }
 export function clear() {

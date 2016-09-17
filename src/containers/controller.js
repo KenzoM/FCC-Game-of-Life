@@ -12,8 +12,7 @@ class Controller extends Component {
   }
 
   test(){
-    // this.props.start
-    console.log(this.props.coord)
+    this.props.start(this.props.coord)
   }
   render(){
     return(
