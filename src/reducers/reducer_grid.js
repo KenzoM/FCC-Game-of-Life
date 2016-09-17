@@ -1,4 +1,4 @@
-import { CELL_CLICK, CLEAR, RANDOMIZE } from '../actions/index';
+import { CELL_CLICK, CLEAR, RANDOMIZE, START } from '../actions/index';
 
 function getRandomInt(min, max) {
     "use strict";
@@ -25,14 +25,20 @@ export default function(state = initialState, action){
         ...state,
         cells
       };
+    case START:
+      console.log(state,'this is state')
+      return state
+
     case CLEAR:
-      const clearCell = state.cells.map( val => 0)
+      const clearCells = state.cells.map( val => 0)
       //use Object.assign to create new object and update the grid-cells
-      return Object.assign({}, state, {cells: clearCell})
+      return Object.assign({}, state, {cells: clearCells})
 
     case RANDOMIZE:
-      console.log(state)
-      return state
+      const boardDimension = state.width * state.height
+      //use Object.assign to create new object and randomize the grid-cells
+      const randomCells = Array.from({length: boardDimension }, () => getRandomInt(0, 1))
+      return Object.assign({}, state, {cells: randomCells})
     }
 
   return state;

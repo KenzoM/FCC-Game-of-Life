@@ -10,6 +10,11 @@ export function onCellClick(coord) {
     payload: coord
   }
 }
+export function start() {
+  return {
+    type: START
+  }
+}
 export function clear() {
   return {
     type: CLEAR
