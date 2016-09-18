@@ -7,16 +7,16 @@ function getRandomInt(min, max) {
 }
 
 const initialState = {
-  width: 3,
-  height: 3,
+  width: 5,
+  height: 5,
   generation: 0
 };
 
 initialState.cells = Array.from(
   {length: initialState.width * initialState.height}, () => getRandomInt(0, 1)
 )
-function neighbors(pos,dimension){
-  let neighbors = []
+function findNeighbors(pos,dimension){
+  let neighbors = [];
   const width = dimension[0];
   const height = dimension[1];
   //coord are coordinates in array: [y coordinate, x coordinate]
@@ -35,12 +35,30 @@ function neighbors(pos,dimension){
   neighbors.push([downBoundary,leftBoundary].join("-")) //bottom-left
   neighbors.push([coord[0],leftBoundary].join("-")) //left
   neighbors.push([upBoundary,leftBoundary].join("-")) //top-left
-  console.log(neighbors)
+  return neighbors
+}
+
+function deadOrAlive(status){
+  let count = 0
+  for(let i = 0 ; i < status.length ; i++){
+    if (status[i] === 1){
+      count += 1;
+    }
+  }
+  // console.log(status,'this is status')
+  if(count < 2){
+    return 'dead'
+  } else if (count > 3) {
+    return 'dead'
+  } 
 }
 
 function nextGeneration(currentGeneration,state){
   for (var coordinate in currentGeneration){
-    neighbors(coordinate,[state.width,state.height])
+    let neighbors = findNeighbors(coordinate,[state.width,state.height])
+    let nextGenStatus = neighbors.map(neighborsCoord => currentGeneration[neighborsCoord])
+    const jam = deadOrAlive(nextGenStatus)
+    console.log(jam)
   }
 
 }
