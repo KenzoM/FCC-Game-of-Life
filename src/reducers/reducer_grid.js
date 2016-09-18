@@ -7,8 +7,8 @@ function getRandomInt(min, max) {
 }
 
 const initialState = {
-  width: 5,
-  height: 5,
+  width: 3,
+  height: 3,
   generation: 0
 };
 
@@ -38,27 +38,39 @@ function findNeighbors(pos,dimension){
   return neighbors
 }
 
-function deadOrAlive(status){
+function deadOrAlive(neighborStatus,cellStatus){
   let count = 0
-  for(let i = 0 ; i < status.length ; i++){
-    if (status[i] === 1){
+  // increment count if the neighbor cells is alive
+  for(let i = 0 ; i < neighborStatus.length ; i++){
+    if (neighborStatus[i] === 1){
       count += 1;
     }
   }
-  // console.log(status,'this is status')
   if(count < 2){
     return 'dead'
   } else if (count > 3) {
     return 'dead'
-  } 
+  } else if ((count === 2 || 3) && cellStatus === 1 ){
+    return 'alive'
+  } else if( count === 3 && cellStatus === 0){
+    return 'alive'
+  } else{
+    return 'dead'
+  }
 }
 
 function nextGeneration(currentGeneration,state){
+  //index will help pass the current state of each cell
+  let index = 0;
   for (var coordinate in currentGeneration){
+    //collect all neighbors
     let neighbors = findNeighbors(coordinate,[state.width,state.height])
-    let nextGenStatus = neighbors.map(neighborsCoord => currentGeneration[neighborsCoord])
-    const jam = deadOrAlive(nextGenStatus)
+    //obtain status of each current neighbor cell's status
+    let neighborsStatus = neighbors.map(neighborsCoord => currentGeneration[neighborsCoord])
+    // determine if current cell survives soley depending on neighbors' status
+    const jam = deadOrAlive(neighborsStatus, state.cells[index])
     console.log(jam)
+    index++;
   }
 
 }
