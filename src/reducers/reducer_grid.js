@@ -89,6 +89,7 @@ export default function(state = initialState, action){
         cells
       };
     case START:
+      console.log('start@')
       const newGeneration = nextGeneration(action.payload,state)
       // console.log(newGeneration)
       // console.log(state.cells)

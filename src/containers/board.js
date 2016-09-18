@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { onCellClick } from '../actions/index';
+import { onCellClick} from '../actions/index';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Cell from '../components/cell'
@@ -14,7 +14,6 @@ class Board extends Component {
     this.props.onCellClick(coord)
   }
   componentDidMount() {
-
   }
   render(){
     const height = this.props.grid.height
