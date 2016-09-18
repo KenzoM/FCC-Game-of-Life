@@ -7,8 +7,8 @@ function getRandomInt(min, max) {
 }
 
 const initialState = {
-  width: 5,
-  height: 5,
+  width: 3,
+  height: 3,
   generation: 0
 };
 
@@ -16,8 +16,11 @@ initialState.cells = Array.from(
   {length: initialState.width * initialState.height}, () => getRandomInt(0, 1))
 
 function nextGeneration(currentGeneration){
-  console.log(currentGeneration)
-  // currentGeneration.map(kenzo => console.log(kenzo))
+  for (var prop in currentGeneration){
+    console.log(prop)
+    console.log(currentGeneration[prop])
+  }
+
 }
 
 export default function(state = initialState, action){
@@ -33,14 +36,7 @@ export default function(state = initialState, action){
         cells
       };
     case START:
-      var currentGeneration = {};
-      //flatten the array of objects
-      for(var i = 0; i < action.payload.length; i++){
-          for(var x in action.payload[i]){
-              currentGeneration[x] = action.payload[i][x];
-          }
-      }
-      nextGeneration(currentGeneration)
+      nextGeneration(action.payload)
       return state
 
     case CLEAR:

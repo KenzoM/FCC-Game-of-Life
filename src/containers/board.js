@@ -20,11 +20,12 @@ class Board extends Component {
     const height = this.props.grid.height
     const width = this.props.grid.width
     let rows = [];
-    let myArray = []
+    let myArray = [];
+    let obj = {}
     for (let y = 0; y < height; y++) {
       let rowID = `row${y}`;
       let bin = [];
-      let obj = {}
+      // let obj = {}
       for (let x = 0; x < width; x++){
         let cellID = `${y}-${x}`;
         let index = y * width + x //index of grid
@@ -39,11 +40,10 @@ class Board extends Component {
         obj[cellID] = status
       }
       rows.push(<tr key={y} id={rowID}>{bin}</tr>)
-      myArray.push(obj);
     }
     return(
       <div className="container">
-        <Controller coord={myArray} />
+        <Controller coord={obj} />
         <div className="row">
           <div className="col s12 board"></div>
             <table id="simple-board">
