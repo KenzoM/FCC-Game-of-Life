@@ -14,6 +14,7 @@ class Controller extends Component {
   }
 
   test(){
+    //toggle Start and Pause render btn
     this.setState({start: this.state.start === true ? false : true})
     this.props.start(this.props.coord)
   }

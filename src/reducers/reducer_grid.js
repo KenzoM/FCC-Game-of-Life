@@ -5,16 +5,21 @@ function getRandomInt(min, max) {
     let range = max - min + 1;
     return Math.floor(Math.random() * range) + min;
 }
-
+/////////////////
+//intialize app state/////
 const initialState = {
   width: 40,
   height: 18,
-  generation: 0
+  generation: 0,
+  start: true
 };
 
 initialState.cells = Array.from(
   {length: initialState.width * initialState.height}, () => getRandomInt(0, 1)
 )
+//////////////////////////
+//////////////////
+
 function findNeighbors(pos,dimension){
   let neighbors = [];
   const width = dimension[0];
@@ -89,11 +94,15 @@ export default function(state = initialState, action){
         cells
       };
     case START:
-      console.log('start@')
+      // console.log('start@')
+      const toggleStart = state.start === true ? false : true
+      if (state.start === true){
+        console.log('START THE GAME')
+      } else {
+        console.log('PAUSE THE GAME')
+      }
       const newGeneration = nextGeneration(action.payload,state)
-      // console.log(newGeneration)
-      // console.log(state.cells)
-      return Object.assign({}, state, {cells: newGeneration})
+      return Object.assign({}, state, {cells: newGeneration, start: toggleStart })
 
     case CLEAR:
       const clearCells = state.cells.map( val => 0)
