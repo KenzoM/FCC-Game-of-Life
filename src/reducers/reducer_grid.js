@@ -7,8 +7,8 @@ function getRandomInt(min, max) {
 }
 
 const initialState = {
-  width: 3,
-  height: 3,
+  width: 40,
+  height: 18,
   generation: 0
 };
 
@@ -60,6 +60,7 @@ function deadOrAlive(neighborStatus,cellStatus){
 }
 
 function nextGeneration(currentGeneration,state){
+  let results = []
   //index will help pass the current state of each cell
   let index = 0;
   for (var coordinate in currentGeneration){
@@ -68,11 +69,11 @@ function nextGeneration(currentGeneration,state){
     //obtain status of each current neighbor cell's status
     let neighborsStatus = neighbors.map(neighborsCoord => currentGeneration[neighborsCoord])
     // determine if current cell survives soley depending on neighbors' status
-    const jam = deadOrAlive(neighborsStatus, state.cells[index])
-    console.log(jam)
+    const cellStatus = deadOrAlive(neighborsStatus, state.cells[index]) === 'alive' ? 1 : 0
+    results.push(cellStatus)
     index++;
   }
-
+  return results
 }
 
 export default function(state = initialState, action){
@@ -88,8 +89,10 @@ export default function(state = initialState, action){
         cells
       };
     case START:
-      nextGeneration(action.payload,state)
-      return state
+      const newGeneration = nextGeneration(action.payload,state)
+      // console.log(newGeneration)
+      // console.log(state.cells)
+      return Object.assign({}, state, {cells: newGeneration})
 
     case CLEAR:
       const clearCells = state.cells.map( val => 0)
@@ -98,8 +101,8 @@ export default function(state = initialState, action){
 
     case RANDOMIZE:
       const boardDimension = state.width * state.height
-      //use Object.assign to create new object and randomize the grid-cells
       const randomCells = Array.from({length: boardDimension }, () => getRandomInt(0, 1))
+      //use Object.assign to create new object and randomize the grid-cells
       return Object.assign({}, state, {cells: randomCells})
     }
 
