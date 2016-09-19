@@ -7,7 +7,6 @@ import Generation from '../components/generation';
 class Controller extends Component {
   constructor(props){
     super(props);
-
     this.startBtnText = this.startBtnText.bind(this);
     this.initializeAnimation = this.initializeAnimation.bind(this)
   }

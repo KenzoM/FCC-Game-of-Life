@@ -9,7 +9,7 @@ function getRandomInt(min, max) {
 //intialize app state/////
 const initialState = {
   width: 40,
-  height: 15,
+  height: 20,
   generation: 0,
   start: true
 };
@@ -95,22 +95,26 @@ export default function(state = initialState, action){
         cells
       };
     case START:
+      let toggleStart2 = state.start === true ? false : true;
       if (state.start === true){
         let newGenerationNumber = state.generation + 1;
         const newGeneration = nextGeneration(action.payload,state)
         return Object.assign({}, state, {cells: newGeneration, generation: newGenerationNumber })
       } else {
-        return Object.assign({}, state, {start: toggleStart })
+        return Object.assign({}, state, {start: false })
       }
     case TOGGLE:
       let toggleStart = state.start === true ? false : true;
       return Object.assign({}, state, {start: toggleStart })
 
     case CLEAR:
-      const clearCells = state.cells.map( val => 0)
-
-      //use Object.assign to create new object and clear the grid-cells
-      return Object.assign({}, state, {cells: clearCells, generation: resetGeneration})
+      const clearCells = state.cells.map( val => 0);
+      //use Object.assign to create new object and clear the grid-cells and stop generation, if necessary
+      if (state.start){
+        return Object.assign({}, state, {cells: clearCells, generation: resetGeneration, start: false})
+      } else{
+        return Object.assign({}, state, {cells: clearCells, generation: resetGeneration})
+      }
 
     case RANDOMIZE:
       const boardDimension = state.width * state.height
