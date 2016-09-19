@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { clear , randomize, start, toggle} from '../actions/index';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import Generation from '../components/generation';
 
 class Controller extends Component {
   constructor(props){
@@ -36,11 +37,15 @@ class Controller extends Component {
       <div className="container">
         <div className="row">
           <div className="col s12 controller">
+            <Generation generationNumber={this.props.generationNumber}/>
+          </div>
+          <div className="col s12 controller">
             <a onClick={this.startBtnText} className={kenzo}>
               {this.state.start === true ? 'Pause' : 'Start'}
             </a>
             <a onClick={this.props.clear} className="waves-effect waves-light btn">Clear</a>
             <a onClick={this.props.randomize}className="waves-effect waves-light btn">Randomize</a>
+
           </div>
         </div>
       </div>

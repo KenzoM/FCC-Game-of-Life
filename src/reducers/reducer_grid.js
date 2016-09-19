@@ -8,8 +8,8 @@ function getRandomInt(min, max) {
 /////////////////
 //intialize app state/////
 const initialState = {
-  width: 18,
-  height: 20,
+  width: 40,
+  height: 15,
   generation: 0,
   start: true
 };
@@ -94,13 +94,11 @@ export default function(state = initialState, action){
         cells
       };
     case START:
-      // let toggleStart = state.start === true ? false : true;
       if (state.start === true){
-        // console.log("START THE GAME")
+        let newGenerationNumber = state.generation + 1;
         const newGeneration = nextGeneration(action.payload,state)
-        return Object.assign({}, state, {cells: newGeneration })
+        return Object.assign({}, state, {cells: newGeneration, generation: newGenerationNumber })
       } else {
-        // console.log('PAUSE THE GAME')
         return Object.assign({}, state, {start: toggleStart })
       }
     case TOGGLE:

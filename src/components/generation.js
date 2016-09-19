@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-export default class Generation extends Component {
+export default class Genereation extends Component{
   render(){
-    return(
-      <h3 className="center-align">Generation:</h3>
-    );
+    return (
+      <p className="generation btn-large">Generation: {this.props.generationNumber}</p>
+    )
   }
 }

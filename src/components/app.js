@@ -3,7 +3,6 @@ import Header from './header'
 import Footer from './footer'
 import Board from '../containers/board'
 import Controller from '../containers/controller'
-import Generation from './generation'
 
 import style from '../stylesheets/styles.scss';
 
