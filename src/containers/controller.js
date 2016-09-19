@@ -26,11 +26,17 @@ class Controller extends Component {
     this.props.toggle()
   }
   render(){
+    let kenzo = ''
+    if(this.state.start){
+      kenzo = "waves-effect waves-light pause btn"
+    } else{
+      kenzo = "waves-effect waves-light btn"
+    }
     return(
       <div className="container">
         <div className="row">
           <div className="col s12 controller">
-            <a onClick={this.startBtnText} className="waves-effect waves-light btn">
+            <a onClick={this.startBtnText} className={kenzo}>
               {this.state.start === true ? 'Pause' : 'Start'}
             </a>
             <a onClick={this.props.clear} className="waves-effect waves-light btn">Clear</a>
