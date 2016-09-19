@@ -7,31 +7,29 @@ import Generation from '../components/generation';
 class Controller extends Component {
   constructor(props){
     super(props);
-    this.state = {start : true}
+
     this.startBtnText = this.startBtnText.bind(this);
-    this.test = this.test.bind(this)
+    this.initializeAnimation = this.initializeAnimation.bind(this)
   }
 
-  test(){
+  initializeAnimation(){
     this.props.start(this.props.coord)
-    requestAnimationFrame(this.test)
+    requestAnimationFrame(this.initializeAnimation)
   }
   componentDidMount() {
-    requestAnimationFrame(this.test)
+    requestAnimationFrame(this.initializeAnimation)
   }
 
   startBtnText(){
-    //toggle Start and Pause render btn
-    this.setState({start: this.state.start === true ? false : true})
     //toggle the app state's on start/pause the board
     this.props.toggle()
   }
   render(){
-    let kenzo = ''
-    if(this.state.start){
-      kenzo = "waves-effect waves-light pause btn"
+    let btnText = ''
+    if(this.props.kenzo){
+      btnText = "waves-effect waves-light pause btn"
     } else{
-      kenzo = "waves-effect waves-light btn"
+      btnText = "waves-effect waves-light btn"
     }
     return(
       <div className="container">
@@ -40,8 +38,8 @@ class Controller extends Component {
             <Generation generationNumber={this.props.generationNumber}/>
           </div>
           <div className="col s12 controller">
-            <a onClick={this.startBtnText} className={kenzo}>
-              {this.state.start === true ? 'Pause' : 'Start'}
+            <a onClick={this.startBtnText} className={btnText}>
+              {this.props.kenzo === true ? 'Pause' : 'Start'}
             </a>
             <a onClick={this.props.clear} className="waves-effect waves-light btn">Clear</a>
             <a onClick={this.props.randomize}className="waves-effect waves-light btn">Randomize</a>
