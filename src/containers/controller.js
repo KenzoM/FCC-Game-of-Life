@@ -8,12 +8,15 @@ class Controller extends Component {
     super(props);
     this.state = {start : true}
     this.startBtnText = this.startBtnText.bind(this);
+    this.test = this.test.bind(this)
+  }
+
+  test(){
+    this.props.start(this.props.coord)
+    requestAnimationFrame(this.test)
   }
   componentDidMount() {
-    var self = this;
-    setInterval(function(){
-      self.props.start(self.props.coord)
-    },300)
+    requestAnimationFrame(this.test)
   }
 
   startBtnText(){
