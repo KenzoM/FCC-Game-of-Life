@@ -44,7 +44,7 @@ class Board extends Component {
     return(
       <div className="container">
         <Controller
-          kenzo={this.props.grid.start}
+          buttonText={this.props.grid.start}
           coord={obj}
           boardStart={boardStart}
           generationNumber={this.props.grid.generation}

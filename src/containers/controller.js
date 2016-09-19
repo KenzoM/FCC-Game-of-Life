@@ -25,7 +25,7 @@ class Controller extends Component {
   }
   render(){
     let btnText = ''
-    if(this.props.kenzo){
+    if(this.props.buttonText){
       btnText = "waves-effect waves-light pause btn"
     } else{
       btnText = "waves-effect waves-light btn"
@@ -38,11 +38,11 @@ class Controller extends Component {
           </div>
           <div className="col s12 controller">
             <a onClick={this.startBtnText} className={btnText}>
-              {this.props.kenzo === true ? 'Pause' : 'Start'}
+              {this.props.buttonText === true ? 'Pause' : 'Start'}
             </a>
             <a onClick={this.props.clear} className="waves-effect waves-light btn">Clear</a>
             <a onClick={this.props.randomize}className="waves-effect waves-light btn">Randomize</a>
-            <a onClick={() => this.props.step(this.props.coord)}className="waves-effect waves-light btn">Step</a>
+            <a onClick={() => this.props.step(this.props.coord)}className="waves-effect waves-light btn disabled">Step</a>
 
           </div>
         </div>
