@@ -24,11 +24,14 @@ class Controller extends Component {
     this.props.toggle()
   }
   render(){
-    let btnText = ''
-    if(this.props.buttonText){
-      btnText = "waves-effect waves-light pause btn"
+    let btnText = '';
+    let stepBtnClass = '';
+    if(this.props.startState){
+      btnText = "waves-effect waves-light pause btn";
+      stepBtnClass = 'btn disabled';
     } else{
-      btnText = "waves-effect waves-light btn"
+      btnText = "waves-effect waves-light btn";
+      stepBtnClass = 'waves-effect waves-light btn';
     }
     return(
       <div className="container">
@@ -42,7 +45,7 @@ class Controller extends Component {
             </a>
             <a onClick={this.props.clear} className="waves-effect waves-light btn">Clear</a>
             <a onClick={this.props.randomize}className="waves-effect waves-light btn">Randomize</a>
-            <a onClick={() => this.props.step(this.props.coord)}className="waves-effect waves-light btn disabled">Step</a>
+            <a onClick={() => this.props.step(this.props.coord)}className={stepBtnClass}>Step</a>
 
           </div>
         </div>

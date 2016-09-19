@@ -122,11 +122,13 @@ export default function(state = initialState, action){
       return Object.assign({}, state, {cells: randomCells, generation: resetGeneration})
 
     case STEP:
-      console.log(state)
-      let newGenerationNumber = state.generation + 1;
-      const newGeneration = nextGeneration(action.payload,state)
-      return Object.assign({}, state, {cells: newGeneration, generation: newGenerationNumber })
-      // return state
+      if (state.start){
+        return state
+      } else{
+        let newGenerationNumber = state.generation + 1;
+        const newGeneration = nextGeneration(action.payload,state)
+        return Object.assign({}, state, {cells: newGeneration, generation: newGenerationNumber })
+      }
     }
 
   return state;
