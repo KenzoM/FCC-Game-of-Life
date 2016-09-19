@@ -1,11 +1,10 @@
 export const START = 'START';
 export const CLEAR = 'CLEAR';
 export const RANDOMIZE = 'RANDOMIZE';
-export const CELL_CLICK = 'CELL_CLICK'
-export const EXPORT = 'EXPORT'
-export const TOGGLE = 'TOGGLE'
-
-
+export const STEP = 'STEP';
+export const CELL_CLICK = 'CELL_CLICK';
+export const EXPORT = 'EXPORT';
+export const TOGGLE = 'TOGGLE';
 
 export function onCellClick(coord) {
   return {
@@ -32,5 +31,12 @@ export function randomize() {
 export function toggle() {
   return {
     type: TOGGLE
+  }
+}
+
+export function step(currentGeneration){
+  return {
+    type: STEP,
+    payload: currentGeneration
   }
 }

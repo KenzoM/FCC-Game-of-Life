@@ -1,4 +1,4 @@
-import { CELL_CLICK, CLEAR, RANDOMIZE, START, TOGGLE } from '../actions/index';
+import { CELL_CLICK, CLEAR, RANDOMIZE, START, TOGGLE, STEP } from '../actions/index';
 
 function getRandomInt(min, max) {
     "use strict";
@@ -9,7 +9,7 @@ function getRandomInt(min, max) {
 //intialize app state/////
 const initialState = {
   width: 40,
-  height: 20,
+  height: 10,
   generation: 0,
   start: true
 };
@@ -95,7 +95,6 @@ export default function(state = initialState, action){
         cells
       };
     case START:
-      let toggleStart2 = state.start === true ? false : true;
       if (state.start === true){
         let newGenerationNumber = state.generation + 1;
         const newGeneration = nextGeneration(action.payload,state)
@@ -121,6 +120,12 @@ export default function(state = initialState, action){
       const randomCells = Array.from({length: boardDimension }, () => getRandomInt(0, 1))
       //use Object.assign to create new object and randomize the grid-cells
       return Object.assign({}, state, {cells: randomCells, generation: resetGeneration})
+
+    case STEP:
+      let newGenerationNumber = state.generation + 1;
+      const newGeneration = nextGeneration(action.payload,state)
+      return Object.assign({}, state, {cells: newGeneration, generation: newGenerationNumber })
+      // return state
     }
 
   return state;

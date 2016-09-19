@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { clear , randomize, start, toggle} from '../actions/index';
+import { clear , randomize, start, toggle, step} from '../actions/index';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Generation from '../components/generation';
@@ -42,6 +42,7 @@ class Controller extends Component {
             </a>
             <a onClick={this.props.clear} className="waves-effect waves-light btn">Clear</a>
             <a onClick={this.props.randomize}className="waves-effect waves-light btn">Randomize</a>
+            <a onClick={() => this.props.step(this.props.coord)}className="waves-effect waves-light btn">Step</a>
 
           </div>
         </div>
@@ -51,7 +52,7 @@ class Controller extends Component {
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({clear,randomize,start,toggle}, dispatch)
+  return bindActionCreators({clear,randomize,start,toggle,step}, dispatch)
 }
 
 export default connect(null,mapDispatchToProps)(Controller)
