@@ -50,13 +50,14 @@ class Board extends Component {
           generationNumber={this.props.grid.generation}
         />
         <div className="row">
-          <div className="col s12 board"></div>
+          <div className="col s12 board">
             <table id="simple-board">
                <tbody>
                  {rows}
                </tbody>
              </table>
           </div>
+        </div>
       </div>
     )
   }
