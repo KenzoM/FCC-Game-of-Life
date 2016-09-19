@@ -40,13 +40,12 @@ class Board extends Component {
       }
       rows.push(<tr key={y} id={rowID}>{bin}</tr>)
     }
-    let boardStart = this.props.grid.start ;
     return(
       <div className="container">
         <Controller
           startState={this.props.grid.start}
           coord={obj}
-          boardStart={boardStart}
+          boardStart={this.props.grid.start}
           generationNumber={this.props.grid.generation}
         />
         <div className="row">

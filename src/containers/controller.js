@@ -12,6 +12,7 @@ class Controller extends Component {
   }
 
   initializeAnimation(){
+    // console.log(this.props.startState)
     this.props.start(this.props.coord)
     requestAnimationFrame(this.initializeAnimation)
   }
@@ -20,7 +21,7 @@ class Controller extends Component {
   }
 
   startBtnText(){
-    //toggle the app state's on start/pause the board
+    //toggle the app state's on starting/pausing the board
     this.props.toggle()
   }
   render(){
@@ -41,7 +42,7 @@ class Controller extends Component {
           </div>
           <div className="col s12 controller">
             <a onClick={this.startBtnText} className={btnText}>
-              {this.props.buttonText === true ? 'Pause' : 'Start'}
+              {this.props.startState === true ? 'Pause' : 'Start'}
             </a>
             <a onClick={this.props.clear} className="waves-effect waves-light btn">Clear</a>
             <a onClick={this.props.randomize}className="waves-effect waves-light btn">Randomize</a>
