@@ -82,6 +82,7 @@ function nextGeneration(currentGeneration,state){
 }
 
 export default function(state = initialState, action){
+  const resetGeneration = 0;
   switch (action.type) {
     case CELL_CLICK:
       const cells = [...state.cells]; //copy the cells first
@@ -107,14 +108,15 @@ export default function(state = initialState, action){
 
     case CLEAR:
       const clearCells = state.cells.map( val => 0)
+
       //use Object.assign to create new object and clear the grid-cells
-      return Object.assign({}, state, {cells: clearCells})
+      return Object.assign({}, state, {cells: clearCells, generation: resetGeneration})
 
     case RANDOMIZE:
       const boardDimension = state.width * state.height
       const randomCells = Array.from({length: boardDimension }, () => getRandomInt(0, 1))
       //use Object.assign to create new object and randomize the grid-cells
-      return Object.assign({}, state, {cells: randomCells})
+      return Object.assign({}, state, {cells: randomCells, generation: resetGeneration})
     }
 
   return state;
