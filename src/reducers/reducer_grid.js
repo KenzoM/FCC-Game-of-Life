@@ -1,4 +1,4 @@
-import { CELL_CLICK, CLEAR, RANDOMIZE, START } from '../actions/index';
+import { CELL_CLICK, CLEAR, RANDOMIZE, START, TOGGLE } from '../actions/index';
 
 function getRandomInt(min, max) {
     "use strict";
@@ -8,8 +8,8 @@ function getRandomInt(min, max) {
 /////////////////
 //intialize app state/////
 const initialState = {
-  width: 40,
-  height: 18,
+  width: 10,
+  height: 10,
   generation: 0,
   start: true
 };
@@ -94,19 +94,22 @@ export default function(state = initialState, action){
         cells
       };
     case START:
-      // console.log('start@')
-      const toggleStart = state.start === true ? false : true
+      // let toggleStart = state.start === true ? false : true;
       if (state.start === true){
-        console.log('START THE GAME')
+        // console.log("START THE GAME")
+        const newGeneration = nextGeneration(action.payload,state)
+        return Object.assign({}, state, {cells: newGeneration })
       } else {
-        console.log('PAUSE THE GAME')
+        // console.log('PAUSE THE GAME')
+        return Object.assign({}, state, {start: toggleStart })
       }
-      const newGeneration = nextGeneration(action.payload,state)
-      return Object.assign({}, state, {cells: newGeneration, start: toggleStart })
+    case TOGGLE:
+      let toggleStart = state.start === true ? false : true;
+      return Object.assign({}, state, {start: toggleStart })
 
     case CLEAR:
       const clearCells = state.cells.map( val => 0)
-      //use Object.assign to create new object and update the grid-cells
+      //use Object.assign to create new object and clear the grid-cells
       return Object.assign({}, state, {cells: clearCells})
 
     case RANDOMIZE:

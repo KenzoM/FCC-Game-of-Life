@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { clear , randomize, start} from '../actions/index';
+import { clear , randomize, start, toggle} from '../actions/index';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -7,23 +7,27 @@ class Controller extends Component {
   constructor(props){
     super(props);
     this.state = {start : true}
-    this.test = this.test.bind(this);
+    this.startBtnText = this.startBtnText.bind(this);
   }
   componentDidMount() {
-    this.props.start(this.props.coord)
+    var self = this;
+    setInterval(function(){
+      self.props.start(self.props.coord)
+    },300)
   }
 
-  test(){
+  startBtnText(){
     //toggle Start and Pause render btn
     this.setState({start: this.state.start === true ? false : true})
-    this.props.start(this.props.coord)
+    //toggle the app state's on start/pause the board
+    this.props.toggle()
   }
   render(){
     return(
       <div className="container">
         <div className="row">
           <div className="col s12 controller">
-            <a onClick={this.test} className="waves-effect waves-light btn">
+            <a onClick={this.startBtnText} className="waves-effect waves-light btn">
               {this.state.start === true ? 'Pause' : 'Start'}
             </a>
             <a onClick={this.props.clear} className="waves-effect waves-light btn">Clear</a>
@@ -36,8 +40,7 @@ class Controller extends Component {
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({clear,randomize,start}, dispatch)
+  return bindActionCreators({clear,randomize,start,toggle}, dispatch)
 }
-
 
 export default connect(null,mapDispatchToProps)(Controller)

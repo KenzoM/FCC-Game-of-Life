@@ -28,7 +28,7 @@ class Board extends Component {
       for (let x = 0; x < width; x++){
         let cellID = `${y}-${x}`;
         let index = y * width + x //index of grid
-        let status = this.props.grid.cells[index];//0 = dead, 1 = alive
+        let status = this.props.grid.cells[index]; //0 = dead, 1 = alive
         bin.push(
           <Cell
             key={x}
@@ -40,9 +40,10 @@ class Board extends Component {
       }
       rows.push(<tr key={y} id={rowID}>{bin}</tr>)
     }
+    let boardStart = this.props.grid.start ;
     return(
       <div className="container">
-        <Controller coord={obj} />
+        <Controller coord={obj} boardStart={boardStart} />
         <div className="row">
           <div className="col s12 board"></div>
             <table id="simple-board">

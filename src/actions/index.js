@@ -2,6 +2,9 @@ export const START = 'START';
 export const CLEAR = 'CLEAR';
 export const RANDOMIZE = 'RANDOMIZE';
 export const CELL_CLICK = 'CELL_CLICK'
+export const EXPORT = 'EXPORT'
+export const TOGGLE = 'TOGGLE'
+
 
 
 export function onCellClick(coord) {
@@ -24,5 +27,10 @@ export function clear() {
 export function randomize() {
   return {
     type: RANDOMIZE
+  }
+}
+export function toggle() {
+  return {
+    type: TOGGLE
   }
 }
