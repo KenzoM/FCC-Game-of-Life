@@ -16,6 +16,7 @@ export default class Header extends Component {
             <a href={url} className="brand-logo ">FCC Game of Life</a>
             <ul id="nav-mobile" className="right hide-on-med-and-down">
               <li><a href="https://github.com/Neotriz/FCC-Game-of-Life">Github</a></li>
+              <li><a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Wiki on Game of Life</a></li>
               <li>
                 <a className="dropdown-button"
                   data-activates="dropdown1">Examples
