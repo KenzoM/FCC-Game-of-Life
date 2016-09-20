@@ -56,7 +56,7 @@ class Controller extends Component {
       exampleBtn = 'btn disabled';
     } else{
       btnText = "waves-effect waves-light btn";
-      disabledClass = 'waves-effect waves-light btn';
+      disabledClass = 'waves-effect waves-light btn setBtn';
       exampleBtn = 'waves-effect waves-light btn exampleBtn';
     }
     return(

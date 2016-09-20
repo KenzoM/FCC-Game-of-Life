@@ -21,10 +21,9 @@ td{
   border-radius: 1px;
   cursor: pointer;
   transition: background 0.2s linear;
-}
-
-td:hover{
-  background: #564787;
+  &:hover{
+    background: #564787;
+  }
 }
 
 .alive{
@@ -37,6 +36,18 @@ td:hover{
 
 .exampleBtn{
   background: #FE938C;
+  transition: background 0.2s linear;
+  &:hover{
+    background: rgb(189, 61, 88);
+  }
+}
+
+.setBtn{
+  background: #3cafcf;
+  transition: background 0.2s linear;
+  &:hover{
+    background: rgb(114, 108, 224)
+  }
 }
 
 .controller{
