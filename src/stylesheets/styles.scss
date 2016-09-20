@@ -38,7 +38,6 @@ td:hover{
 }
 
 .controller{
-  margin-top: 10px;
   text-align: center;
 }
 
@@ -50,6 +49,7 @@ td:hover{
   background: #977fd0;
   cursor: default;
   pointer-events: none;
+  margin-top: 2px;
 }
 
 .board {

@@ -17,9 +17,9 @@ class Controller extends Component {
     requestAnimationFrame(this.initializeAnimation)
   }
   componentDidMount() {
-    this.setState({
-      request: requestAnimationFrame(this.initializeAnimation)
-    })
+    // this.setState({
+    //   request: requestAnimationFrame(this.initializeAnimation)
+    // })
   }
 
   componentWillUnmount(){

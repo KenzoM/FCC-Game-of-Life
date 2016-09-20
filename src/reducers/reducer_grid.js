@@ -8,7 +8,7 @@ function getRandomInt(min, max) {
 /////////////////
 //intialize app state/////
 const initialState = {
-  width: 60,
+  width: 50,
   height: 30,
   generation: 0,
   start: true
