@@ -15,14 +15,12 @@ table {
 }
 
 td{
-  // width: 33.33%;
-  // position: relative;
   padding: 7px;
   background: #F2FDFF;
   border: 3px solid #DBCBD8;
   border-radius: 1px;
   cursor: pointer;
-  transition: background 0.3s ease-out;
+  transition: background 0.2s linear;
 }
 
 td:hover{
