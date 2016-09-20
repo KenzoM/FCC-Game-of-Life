@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { clear , randomize, start, toggle, step} from '../actions/index';
+import { clear , randomize, start, toggle, step, example} from '../actions/index';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Generation from '../components/generation';
@@ -9,6 +9,7 @@ class Controller extends Component {
     super(props);
     this.startBtn = this.startBtn.bind(this);
     this.clearBtn = this.clearBtn.bind(this);
+    this.exampleBtn = this.exampleBtn.bind(this);
     this.initializeAnimation = this.initializeAnimation.bind(this);
   }
   componentDidMount() {
@@ -23,7 +24,6 @@ class Controller extends Component {
       request: requestAnimationFrame(this.initializeAnimation)
     })
   }
-
 
   startBtn(){
     //toggle the requestAnimationFrame state
@@ -40,15 +40,24 @@ class Controller extends Component {
     cancelAnimationFrame(this.state.request)
     this.props.clear()
   }
+
+  exampleBtn(){
+    if (!this.props.startState){
+      this.props.example()
+    }
+  }
   render(){
     let btnText = '';
-    let stepBtnClass = '';
+    let disabledClass = '';
+    let exampleBtn = ''
     if(this.props.startState){
       btnText = "waves-effect waves-light pause btn";
-      stepBtnClass = 'btn disabled';
+      disabledClass = 'btn disabled';
+      exampleBtn = 'btn disabled';
     } else{
       btnText = "waves-effect waves-light btn";
-      stepBtnClass = 'waves-effect waves-light btn';
+      disabledClass = 'waves-effect waves-light btn';
+      exampleBtn = 'waves-effect waves-light btn exampleBtn';
     }
     return(
       <div className="container">
@@ -62,7 +71,8 @@ class Controller extends Component {
             </a>
             <a onClick={this.clearBtn} className="waves-effect waves-light btn">Clear</a>
             <a onClick={this.props.randomize}className="waves-effect waves-light btn">Randomize</a>
-            <a onClick={() => this.props.step(this.props.coord)}className={stepBtnClass}>Step</a>
+            <a onClick={() => this.props.step(this.props.coord)}className={disabledClass}>Step</a>
+            <a onClick={this.exampleBtn}className={exampleBtn}>Example</a>
           </div>
         </div>
       </div>
@@ -71,7 +81,7 @@ class Controller extends Component {
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({clear,randomize,start,toggle,step}, dispatch)
+  return bindActionCreators({clear,randomize,start,toggle,step,example}, dispatch)
 }
 
 export default connect(null,mapDispatchToProps)(Controller)

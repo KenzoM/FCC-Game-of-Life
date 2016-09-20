@@ -45,7 +45,6 @@ class Board extends Component {
         <Controller
           startState={this.props.grid.start}
           coord={obj}
-          boardStart={this.props.grid.start}
           generationNumber={this.props.grid.generation}
         />
         <div className="row">

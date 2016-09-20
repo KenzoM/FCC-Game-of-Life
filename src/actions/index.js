@@ -5,6 +5,7 @@ export const STEP = 'STEP';
 export const CELL_CLICK = 'CELL_CLICK';
 export const EXPORT = 'EXPORT';
 export const TOGGLE = 'TOGGLE';
+export const EXAMPLE = 'EXAMPLE';
 
 export function onCellClick(coord) {
   return {
@@ -38,5 +39,11 @@ export function step(currentGeneration){
   return {
     type: STEP,
     payload: currentGeneration
+  }
+}
+
+export function example() {
+  return {
+    type: EXAMPLE
   }
 }

@@ -1,4 +1,5 @@
-import { CELL_CLICK, CLEAR, RANDOMIZE, START, TOGGLE, STEP } from '../actions/index';
+import { CELL_CLICK, CLEAR, RANDOMIZE, START, TOGGLE, STEP, EXAMPLE } from '../actions/index';
+import { GLIDER } from '../components/example'
 
 function getRandomInt(min, max) {
     "use strict";
@@ -129,7 +130,8 @@ export default function(state = initialState, action){
         const newGeneration = nextGeneration(action.payload,state)
         return Object.assign({}, state, {cells: newGeneration, generation: newGenerationNumber })
       }
+    case EXAMPLE:
+        return Object.assign({}, state, {generation: resetGeneration, cells: GLIDER})
     }
-
   return state;
 }
