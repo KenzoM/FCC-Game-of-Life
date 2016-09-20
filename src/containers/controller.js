@@ -3,33 +3,44 @@ import { clear , randomize, start, toggle, step} from '../actions/index';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Generation from '../components/generation';
+import Info from '../components/info';
 
 class Controller extends Component {
   constructor(props){
     super(props);
-    this.startBtnText = this.startBtnText.bind(this);
-    this.initializeAnimation = this.initializeAnimation.bind(this)
+    this.state = {request: 0}
+    this.startBtn = this.startBtn.bind(this);
+    this.clearBtn = this.clearBtn.bind(this);
+    this.initializeAnimation = this.initializeAnimation.bind(this);
+  }
+  componentDidMount() {
+    this.setState({
+      request: requestAnimationFrame(this.initializeAnimation)
+    })
   }
 
   initializeAnimation(){
-    // console.log('animate')
     this.props.start(this.props.coord)
-    requestAnimationFrame(this.initializeAnimation)
-  }
-  componentDidMount() {
-    // this.setState({
-    //   request: requestAnimationFrame(this.initializeAnimation)
-    // })
+    this.setState({
+      request: requestAnimationFrame(this.initializeAnimation)
+    })
   }
 
-  componentWillUnmount(){
-    cancelAnimationFrame(this.state.request);
-  }
 
-  startBtnText(){
+  startBtn(){
+    //toggle the requestAnimationFrame state
+    if (this.props.startState){
+      cancelAnimationFrame(this.state.request)
+    }
+    else{
+      requestAnimationFrame(this.initializeAnimation)
+    }
     //toggle the app state's on starting/pausing the board
     this.props.toggle()
-    cancelAnimationFrame(this.initializeAnimation)
+  }
+  clearBtn(){
+    cancelAnimationFrame(this.state.request)
+    this.props.clear()
   }
   render(){
     let btnText = '';
@@ -48,13 +59,15 @@ class Controller extends Component {
             <Generation generationNumber={this.props.generationNumber}/>
           </div>
           <div className="col s12 controller">
-            <a onClick={this.startBtnText} className={btnText}>
+            <a onClick={this.startBtn} className={btnText}>
               {this.props.startState === true ? 'Pause' : 'Start'}
             </a>
-            <a onClick={this.props.clear} className="waves-effect waves-light btn">Clear</a>
+            <a onClick={this.clearBtn} className="waves-effect waves-light btn">Clear</a>
             <a onClick={this.props.randomize}className="waves-effect waves-light btn">Randomize</a>
             <a onClick={() => this.props.step(this.props.coord)}className={stepBtnClass}>Step</a>
-
+            <div className="fixed-action-btn">
+              <Info />
+            </div>
           </div>
         </div>
       </div>
