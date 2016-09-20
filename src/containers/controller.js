@@ -12,17 +12,24 @@ class Controller extends Component {
   }
 
   initializeAnimation(){
-    // console.log(this.props.startState)
+    // console.log('animate')
     this.props.start(this.props.coord)
     requestAnimationFrame(this.initializeAnimation)
   }
   componentDidMount() {
-    requestAnimationFrame(this.initializeAnimation)
+    this.setState({
+      request: requestAnimationFrame(this.initializeAnimation)
+    })
+  }
+
+  componentWillUnmount(){
+    cancelAnimationFrame(this.state.request);
   }
 
   startBtnText(){
     //toggle the app state's on starting/pausing the board
     this.props.toggle()
+    cancelAnimationFrame(this.initializeAnimation)
   }
   render(){
     let btnText = '';
