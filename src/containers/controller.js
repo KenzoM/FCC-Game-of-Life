@@ -3,12 +3,10 @@ import { clear , randomize, start, toggle, step} from '../actions/index';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Generation from '../components/generation';
-import Info from '../components/info';
 
 class Controller extends Component {
   constructor(props){
     super(props);
-    this.state = {request: 0}
     this.startBtn = this.startBtn.bind(this);
     this.clearBtn = this.clearBtn.bind(this);
     this.initializeAnimation = this.initializeAnimation.bind(this);
@@ -65,9 +63,6 @@ class Controller extends Component {
             <a onClick={this.clearBtn} className="waves-effect waves-light btn">Clear</a>
             <a onClick={this.props.randomize}className="waves-effect waves-light btn">Randomize</a>
             <a onClick={() => this.props.step(this.props.coord)}className={stepBtnClass}>Step</a>
-            <div className="fixed-action-btn">
-              <Info />
-            </div>
           </div>
         </div>
       </div>
