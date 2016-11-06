@@ -2,32 +2,32 @@ import React, { Component } from 'react';
 import { onCellClick} from '../actions/index';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Generation from '../components/generation'
+import Generation from '../components/generation';
 import Cell from '../components/cell';
 import Controller from './controller';
 
 class Board extends Component {
   constructor(props){
     super(props);
-    this.onClickToggle = this.onClickToggle.bind(this)
+    this.onClickToggle = this.onClickToggle.bind(this);
   }
   onClickToggle(coord){
-    this.props.onCellClick(coord)
+    this.props.onCellClick(coord);
   }
   componentDidMount() {
   }
   render(){
-    const height = this.props.grid.height
-    const width = this.props.grid.width
+    const height = this.props.grid.height;
+    const width = this.props.grid.width;
     let rows = [];
     let myArray = [];
-    let obj = {}
+    let obj = {};
     for (let y = 0; y < height; y++) {
       let rowID = `row${y}`;
       let bin = [];
       for (let x = 0; x < width; x++){
         let cellID = `${y}-${x}`;
-        let index = y * width + x //index of grid
+        let index = y * width + x ;//index of grid
         let status = this.props.grid.cells[index]; //0 = dead, 1 = alive
         bin.push(
           <Cell

@@ -1,5 +1,8 @@
 var path = require('path');
+var webpack = require('webpack');
+var WriteFilePlugin = require('write-file-webpack-plugin');
 module.exports = {
+  devtool: 'source-map',
   entry: [
     './src/index.js'
   ],
@@ -8,6 +11,15 @@ module.exports = {
     publicPath: '/',
     filename: 'bundle.js'
   },
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({minimize: true}),
+    new webpack.DefinePlugin({
+    'process.env': {
+      'NODE_ENV': JSON.stringify("production")
+    }
+  }),
+  new WriteFilePlugin()
+],
   module: {
     loaders: [{
       exclude: /node_modules/,
@@ -22,10 +34,7 @@ module.exports = {
     }]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx'],
-    alias: {
-    'jquery': path.join(__dirname, 'node_modules/jquery/dist/jquery'),
-    }
+    extensions: ['', '.js', '.jsx']
   },
   devServer: {
     historyApiFallback: true,

@@ -28,28 +28,28 @@ class Controller extends Component {
   startBtn(){
     //toggle the requestAnimationFrame state
     if (this.props.startState){
-      cancelAnimationFrame(this.state.request)
+      cancelAnimationFrame(this.state.request);
     }
     else{
-      requestAnimationFrame(this.initializeAnimation)
+      requestAnimationFrame(this.initializeAnimation);
     }
     //toggle the app state's on starting/pausing the board
-    this.props.toggle()
+    this.props.toggle();
   }
   clearBtn(){
-    cancelAnimationFrame(this.state.request)
-    this.props.clear()
+    cancelAnimationFrame(this.state.request);
+    this.props.clear();
   }
 
   exampleBtn(){
     if (!this.props.startState){
-      this.props.example()
+      this.props.example();
     }
   }
   render(){
     let btnText = '';
     let disabledClass = '';
-    let exampleBtn = ''
+    let exampleBtn = '';
     if(this.props.startState){
       btnText = "waves-effect waves-light pause btn";
       disabledClass = 'btn disabled';
@@ -72,7 +72,6 @@ class Controller extends Component {
             <a onClick={this.clearBtn} className="waves-effect waves-light btn">Clear</a>
             <a onClick={this.props.randomize}className="waves-effect waves-light btn">Randomize</a>
             <a onClick={() => this.props.step(this.props.coord)}className={disabledClass}>Step</a>
-            <a onClick={this.exampleBtn}className={exampleBtn}>Example</a>
           </div>
         </div>
       </div>
