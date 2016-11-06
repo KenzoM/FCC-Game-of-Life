@@ -9,7 +9,8 @@ module.exports = {
   output: {
     path: __dirname,
     publicPath: '/',
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    path: path.join(__dirname, './static')
   },
   plugins: [
     new webpack.optimize.UglifyJsPlugin({minimize: true}),
