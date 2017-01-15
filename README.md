@@ -1,11 +1,11 @@
 # John Conway's Game of Life
-A single-web-page app that utilizes `React` and to emulates John Conway's Game of Life.
+A single-web-page app that utilizes `React.js` and emulates John Conway's Game of Life.
 
 ## Getting Started
 
 [Live Demo](http://kenzomendoza.com/FCC-Game-of-Life/)
 
-The app is based on one of [FreeCodeCamp's challenges](https://www.freecodecamp.com/challenges/build-a-nightlife-coordination-app).
+The app is based on one of [FreeCodeCamp's challenges](https://www.freecodecamp.com/challenges/build-the-game-of-life).
 
 It meets the following criteria:
 
