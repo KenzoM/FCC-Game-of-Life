@@ -1,5 +1,7 @@
 # John Conway's Game of Life
-A single-web-page app that utilizes `React.js` and emulates John Conway's Game of Life.
+A single-web-page app that utilizes `React.js` to John Conway's Game of Life.
+
+[Wiki on Game of Life](https://en.wikipedia.org/wiki/Conway's_Game_of_Life)
 
 ## Getting Started
 
